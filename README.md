@@ -1,5 +1,5 @@
-Project 2: Shopping Cart
-========================
+Project 3: Crowd-Approved Comments
+==================================
 
 ###Heroku URL
 
