@@ -1,4 +1,4 @@
-Project 1: Web Analytics
+Project 2: Shopping Cart
 ========================
 
 ###Heroku URL
