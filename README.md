@@ -1,4 +1,4 @@
-Project 3: Crowd-Approved Comments
+Project 3: Network Stickies
 ==================================
 
 ###Heroku URL
