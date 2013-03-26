@@ -3,7 +3,7 @@ Project 3: Network Stickies
 
 ###Heroku URL
 
-Please put it here: http://sampleapp.herokuapp.com
+Please put it here: http://tranquil-inlet-4297.herokuapp.com/ 
 
 ###Notes
 
