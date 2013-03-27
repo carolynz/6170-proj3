@@ -1,5 +1,30 @@
-<h1>New user</h1>
+<h1>Sign Up</h1>
 
-<%= render 'form' %>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="flash flash-alert">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br />
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p><%= f.submit "Create account", :class => "btn btn-primary" %></p>
+<% end %>
 
 <%= link_to 'Back', users_path %>
