@@ -1,13 +1,18 @@
 CarolynzProj3::Application.routes.draw do
+
+  resources :pinned_notes
+  resources :notes
+
   get "sessions/new"
 
   resources :users
   resources :sessions
 
-  get "home/index"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
+
+  root :to => 'notes#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +63,6 @@ CarolynzProj3::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

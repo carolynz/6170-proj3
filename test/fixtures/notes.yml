@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  email: one@mit.edu
-  password_digest: MyString
+  user_id: 1
+  size: 1
+  contents: Note1contents
 
 two:
-  email: two@mit.edu
-  password_digest: MyString
+  user_id: 1
+  contents: Note2Contents

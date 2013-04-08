@@ -1,0 +1,8 @@
+<%= div_for(note) do %>
+  <div class = "note_delete" style = "display: none;">
+    <%= link_to '<i class="icon-remove"></i>'.html_safe, note, :method => :delete, :class => "delete_note", :remote => true %>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    <%= note.contents %> 
+  </div>
+<% end %>

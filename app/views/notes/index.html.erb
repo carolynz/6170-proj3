@@ -1,0 +1,35 @@
+  <h1>My notes</h1>
+  <%= render :partial => "new" %>
+
+  <div id = "notes">
+    <%= render :partial => @notes, :locals => {:list => true} %>
+  </div>
+
+<script> 
+$(document).ready(function(){
+  $(document.body).on('mouseenter', '.note', function(){
+      console.log('in mouseenter')
+      console.log(this)
+      $(this).children(".note_delete").show();
+    })
+    .on('mouseleave', '.note', function(){
+      console.log('in mouseleave')
+      console.log(this)
+      $(this).children(".note_delete").hide();
+    });
+
+  $('.note_contents').on('blur', function(){
+    var new_text = $(this).text();
+    //extract the note's ID # (e.g., "25")  from its parent div ID (e.g., "note_25")
+    var note_id = $(this).parent().attr('id').replace(/^\D+/g, '');
+
+    $.ajax({ url: '/notes/'+note_id,
+             type: 'PUT',
+             data: { note: { id: note_id, contents: new_text } },
+             success: function() {
+               console.log('success!');
+             }
+           });
+  });
+});
+</script>
