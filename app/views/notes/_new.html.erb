@@ -1,10 +1,6 @@
 <%= form_for Note.new, :remote => true do |f| %>
   <div class="field">
-    <%= f.text_area(:contents, :rows => 2, :style => "width: 500px; padding: 10px;") %>
-  </div>
-
-  <div class = "field">
-    <%= f.hidden_field :pinned, :value => "false" %>
+    <%= f.text_area(:contents, :rows => 2, :style => "width: 390px; padding: 10px;") %>
   </div>
 
   <div class="actions">

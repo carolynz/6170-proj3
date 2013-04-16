@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CarolynzProj3</title>
+  <link href="/assets/application.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/bootstrap_and_overrides.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/home.css?body=1" media="all" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-transition.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-alert.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-modal.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-tab.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-popover.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-button.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap/bootstrap-affix.js?body=1" type="text/javascript"></script>
+<script src="/assets/twitter/bootstrap.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap.js?body=1" type="text/javascript"></script>
+<script src="/assets/home.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="SKl6ZOgMY1lWy46R4fcTAMwLZidd8VViTiYx1N3LflI=" name="csrf-token" />
+</head>
+<body>
+  <div class = "navbar">
+    <div class = "navbar navbar-fixed-top" >
+      <div class = "navbar-inner">
+        <div class = "container">
+          <a class = "brand" href=http://localhost:3000/> P3 Network Stickies</a>
+          <ul class = "nav">
+            <li> <a href="http://localhost:3000/">Home</a></li>
+              <li><a href="#">user1@mit.edu</a></li>
+              <li><a href="/log_out">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "container">
+    <div class = "row">
+      <div class = "span9">
+  <h1>My notes</h1>
+  <form accept-charset="UTF-8" action="/notes" class="new_note" data-remote="true" id="new_note" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="SKl6ZOgMY1lWy46R4fcTAMwLZidd8VViTiYx1N3LflI=" /></div>
+  <div class="field">
+    <textarea cols="40" id="note_contents" name="note[contents]" rows="2" style="width: 500px; padding: 10px;">
+</textarea>
+  </div>
+
+  <div class="actions">
+    <input class="btn" name="commit" type="submit" value="Add note" />
+  </div>
+</form>
+
+  <div id = "notes">
+    <div class="note" id="note_9">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/9" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    ehrmagerd guise it works 
+  </div>
+</div><div class="note" id="note_7">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/7" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    starting anew. #hashtags. 
+  </div>
+</div><div class="note" id="note_6">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/6" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    trying another hashtag that starts with a #another 
+  </div>
+</div><div class="note" id="note_5">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/5" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    trying a hashtag that starts with a #aardvark 
+  </div>
+</div><div class="note" id="note_4">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/4" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    two hashtags in one note test #hash #hashtag 
+  </div>
+</div><div class="note" id="note_3">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/3" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    duplicate hashtag test #hash 
+  </div>
+</div><div class="note" id="note_2">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/2" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    add a hashtag test #hash 
+  </div>
+</div><div class="note" id="note_1">
+  <div class = "note_delete" style = "display: none;">
+    <a href="/notes/1" class="delete_note" data-method="delete" data-remote="true" rel="nofollow"><i class="icon-remove"></i></a>
+  </div>
+  <div class = 'note_contents' contenteditable = true>
+    no hashtags test 
+  </div>
+</div>
+  </div>
+</div>
+
+<div class = "span3">
+  <h1>#hashtags</h1>
+  <!-- TODO: this doesn't work -->
+  <!-- TODO: create a named scope for hashtags?? -->
+    <div class="hashtag" id="hashtag_5">
+  <span class = "hashtag_name">
+    hashtags 5
+  </span>
+
+  <span class = "hashtag_count">
+    (#)
+    <!-- TODO: include hashtag notes count -->
+  </span>
+
+</div>
+</div>
+
+<script> 
+$(document).ready(function(){
+  $(document.body).on('mouseenter', '.note', function(){
+      $(this).children(".note_delete").show();
+    })
+    .on('mouseleave', '.note', function(){
+      $(this).children(".note_delete").hide();
+    });
+
+  $('.note_contents').on('blur', function(){
+    var new_text = $(this).text();
+    //extract the note's ID # (e.g., "25")  from its parent div ID (e.g., "note_25")
+    var note_id = $(this).parent().attr('id').replace(/^\D+/g, '');
+
+    $.ajax({ url: '/notes/'+note_id,
+             type: 'PUT',
+             data: { note: { id: note_id, contents: new_text } },
+             success: function() {
+               console.log('success!');
+             }
+           });
+  });
+});
+</script>
+    </div>
+  </div>
+
+</body>
+</html>
