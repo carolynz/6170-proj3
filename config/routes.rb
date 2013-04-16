@@ -1,6 +1,9 @@
 CarolynzProj3::Application.routes.draw do
 
-  resources :pinned_notes
+  get "home/index"
+
+  resources :hashtags
+
   resources :notes
 
   get "sessions/new"
@@ -12,7 +15,7 @@ CarolynzProj3::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
-  root :to => 'notes#index'
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

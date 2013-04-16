@@ -42,28 +42,150 @@ body{
   color: red;
 }
 
-.note{
-  width:500px;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
-  border: 1px solid #DDD;
+@box-side: 200px;
+@box-margin: 10px;
 
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+.container{
+  width: ((@box-side * 5) + (@box-margin * 5));
+}
+
+#notes{
+  padding-top:200px;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.note{
+  margin-right: @box-margin;
+  margin-bottom: @box-margin;
+  background-color: #EEE;
+
   z-index: 2;
+  position: relative;
 }
 
 .note:hover{
-  -moz-box-shadow: 0 0 10px #DDD;
+  -moz-box-shadow: 0 0 10px #CCC;
   -webkit-box-shadow: 0 0 10px #CCC;
   box-shadow: 0 0 10px #CCC;
+
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+.note_contents{
+  z-index:3;
+  white-space:pre-wrap;
 }
 
 .note_delete{
   height:0px;
-  position:relative;
-  left:485px;
-  top:0px;
-  z-index: 3;
+  position:absolute;
+  right:10px;
+  top:10px;
+  z-index: 4;
+}
+
+.notewidth1{
+  width: @box-side;
+}
+
+.notewidth2{
+  width: ((@box-side * 2) + @box-margin);
+}
+
+.notewidth3{
+  width: ((@box-side * 3) + (@box-margin * 2));
+}
+
+.notewidth4{
+  width: ((@box-side * 4) + (@box-margin * 3));
+}
+
+.notewidth5{
+  width: ((@box-side * 5) + (@box-margin * 4));  
+}
+
+.noteheight1{
+  height: @box-side;
+}
+
+.noteheight2{
+  height: ((@box-side * 2) + @box-margin);
+}
+
+.noteheight3{
+  height: ((@box-side * 3) + (@box-margin * 2));
+}
+
+.noteheight4{
+  height: ((@box-side * 4) + (@box-margin * 3));
+}
+
+.noteheight5{
+  height: ((@box-side * 5) + (@box-margin * 4));  
+}
+
+.note_contents{
+  position:absolute;
+  padding: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: inherit;
+  height: inherit;
+  overflow-y: scroll;
+}
+
+.delete_note{
+  color: #000000;
+  opacity:0.2;
+  text-decoration:none;
+}
+
+.delete_note:hover{
+  color: #000000;
+  opacity:0.4;
+  text-decoration:none;
+}
+
+.toolbar{
+  white-space:nowrap;
+  position:absolute;
+  left:0px;
+  top: -50px;
+  z-index:1000;
+}
+
+.toolbar-element{
+  overflow:visible;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
 }

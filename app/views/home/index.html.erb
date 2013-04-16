@@ -1,0 +1,15 @@
+<div class = "span12">
+  <h1 id = "notes_h1">All notes</h1>
+  <%= render :partial => "notes/new" %>
+
+  <div id = "notes">
+    <%= render :partial => "notes/note", :collection => @notes %>
+  </div>
+</div>
+
+<!-- <div class = "span3">
+  <h1>Hashtags</h1>
+  <div id = "hashtags">
+    <%= render :partial => "hashtags/index", :locals => { :hashtags => @hashtags } %>
+  </div>
+</div> -->

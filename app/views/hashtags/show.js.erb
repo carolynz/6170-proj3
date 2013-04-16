@@ -1,0 +1,2 @@
+$('#notes_h1').text("#<%= @hashtag.name %>");
+$('#notes').html("<%= escape_javascript(render(:partial => 'notes/note', :collection => @hashtag.notes))%>");

@@ -1,5 +1,6 @@
-// Add the new note to the top of the note list
-$("#notes").prepend("<%= escape_javascript(render(@note)) %>");
+$('#notes').prepend("<%= escape_javascript(render(@note)) %>")
+  .isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
-// Reset the new note form
 $("#new_note")[0].reset();
+
+// $("#hashtags").html("<%= escape_javascript(render(:partial => 'hashtags/index', :locals => {:hashtags => @hashtags}))%>")

@@ -11,25 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408003408) do
+ActiveRecord::Schema.define(:version => 20130414041333) do
 
-  create_table "categories", :force => true do |t|
+  create_table "hashtag_note_relations", :force => true do |t|
+    t.string   "hashtag_id"
+    t.string   "note_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "hashtags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "categories_notes", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "note_id"
-  end
-
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
     t.string   "contents"
-    t.boolean  "pinned"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.string   "width",      :default => "notewidth1"
+    t.string   "height",     :default => "noteheight1"
   end
 
   create_table "users", :force => true do |t|
