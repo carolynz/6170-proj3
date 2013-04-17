@@ -8,6 +8,7 @@ class Note < ActiveRecord::Base
   before_save :check_hashtags
 
   def check_hashtags
+    self.contents.squeeze(' ').gsub(/[\n\t]/,'')
     # extract hashtags in the new note
     hashtag_strings = ((self.contents).scan(/(?:(?<=\s)|^)#(\w*[A-Za-z_]+\w*)/)).flatten
     hashtags = []

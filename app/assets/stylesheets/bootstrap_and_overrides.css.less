@@ -30,32 +30,32 @@
 // Example:
 // @linkColor: #ff0000;
 
-body{
+body {
   padding-top: 40px;
 }
 
-.flash{
+.flash {
   color: green;
 }
 
-.flash.flash-alert{
+.flash .flash-alert {
   color: red;
 }
 
 @box-side: 200px;
 @box-margin: 10px;
 
-.container{
+.container {
   width: ((@box-side * 5) + (@box-margin * 5));
 }
 
-#notes{
+#notes {
   padding-top:200px;
   padding-left:5px;
   padding-right:5px;
 }
 
-.note{
+.note {
   margin-right: @box-margin;
   margin-bottom: @box-margin;
   background-color: #EEE;
@@ -64,7 +64,7 @@ body{
   position: relative;
 }
 
-.note:hover{
+.note:hover {
   -moz-box-shadow: 0 0 10px #CCC;
   -webkit-box-shadow: 0 0 10px #CCC;
   box-shadow: 0 0 10px #CCC;
@@ -76,12 +76,12 @@ body{
           transition-duration: 0s;
 }
 
-.note_contents{
+.note_contents {
   z-index:3;
   white-space:pre-wrap;
 }
 
-.note_delete{
+.note_delete {
   height:0px;
   position:absolute;
   right:10px;
@@ -89,47 +89,47 @@ body{
   z-index: 4;
 }
 
-.notewidth1{
+.notewidth1 {
   width: @box-side;
 }
 
-.notewidth2{
+.notewidth2 {
   width: ((@box-side * 2) + @box-margin);
 }
 
-.notewidth3{
+.notewidth3 {
   width: ((@box-side * 3) + (@box-margin * 2));
 }
 
-.notewidth4{
+.notewidth4 {
   width: ((@box-side * 4) + (@box-margin * 3));
 }
 
-.notewidth5{
+.notewidth5 {
   width: ((@box-side * 5) + (@box-margin * 4));  
 }
 
-.noteheight1{
+.noteheight1 {
   height: @box-side;
 }
 
-.noteheight2{
+.noteheight2 {
   height: ((@box-side * 2) + @box-margin);
 }
 
-.noteheight3{
+.noteheight3 {
   height: ((@box-side * 3) + (@box-margin * 2));
 }
 
-.noteheight4{
+.noteheight4 {
   height: ((@box-side * 4) + (@box-margin * 3));
 }
 
-.noteheight5{
+.noteheight5 {
   height: ((@box-side * 5) + (@box-margin * 4));  
 }
 
-.note_contents{
+.note_contents {
   position:absolute;
   padding: 10px;
   box-sizing: border-box;
@@ -140,19 +140,19 @@ body{
   overflow-y: scroll;
 }
 
-.delete_note{
+.delete_note {
   color: #000000;
   opacity:0.2;
   text-decoration:none;
 }
 
-.delete_note:hover{
+.delete_note:hover {
   color: #000000;
   opacity:0.4;
   text-decoration:none;
 }
 
-.toolbar{
+.toolbar {
   white-space:nowrap;
   position:absolute;
   left:0px;
@@ -160,7 +160,7 @@ body{
   z-index:1000;
 }
 
-.toolbar-element{
+.toolbar-element {
   overflow:visible;
 }
 
@@ -188,4 +188,65 @@ body{
       -ms-transition-property:     -ms-transform, opacity;
        -o-transition-property:      -o-transform, opacity;
           transition-property:         transform, opacity;
+}
+
+.style-jaf-facitweb-extra-light,
+.style-jaf-facitweb-extra-light-italic,
+.style-jaf-facitweb-regular,
+.style-jaf-facitweb-italic,
+.style-jaf-facitweb-extra-bold,
+.style-jaf-facitweb-extra-bold-italic {
+  font-family:"jaf-facitweb", sans-serif;
+}
+
+.style-adelle-thin,
+.style-adelle-semibold {
+  font-family:"adelle", serif;
+}
+
+.style-league-gothic-regular,
+.style-league-gothic-italic {
+  font-family:"league-gothic", sans-serif;
+}
+
+.style-jaf-facitweb-extra-light{
+  font-weight:200;
+  font-style:normal;
+}
+
+.style-jaf-facitweb-extra-light-italic{
+  font-weight:200;
+  font-style:italic;
+}
+.style-jaf-facitweb-regular{
+  font-weight:400;
+  font-style:normal;
+}
+.style-jaf-facitweb-italic{
+  font-weight:400;
+  font-style:normal;
+}
+.style-jaf-facitweb-extra-bold{
+  font-weight:800;
+  font-style:normal;
+}
+.style-jaf-facitweb-extra-bold-italic{
+  font-weight:800;
+  font-style:italic;
+}
+.style-adelle-thin{
+  font-weight:100;
+  font-style:normal;
+}
+.style-adelle-semibold{
+  font-weight:600;
+  font-style:normal;
+}
+.style-league-gothic-regular{
+  font-weight:400;
+  font-style:normal;
+}
+.style-league-gothic-italic{
+  font-weight:400;
+  font-style:italic;
 }

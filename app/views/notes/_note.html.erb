@@ -2,7 +2,5 @@
   <div class = "note_delete" style = "display: none;">
     <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, note, :method => :delete, :class => "delete_note", :remote => true %>
   </div>
-  <div class = 'note_contents' contenteditable = true>
-    <%= note.contents.html_safe %>
-  </div>
+  <div class = 'note_contents' contenteditable = true><%= "#{note.contents}".html_safe %></div>
 <% end %>

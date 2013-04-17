@@ -4,7 +4,6 @@ $(document).ready(function(){
                     <button class='btn toolbar-element'><i class='icon-align-left'></i></button> \
                     <button class='btn toolbar-element'><i class='icon-align-center'></i></button> \
                     <button class='btn toolbar-element'><i class='icon-align-right'></i></button> \
-                    <button class='btn toolbar-element'><i class='icon-align-justify'></i></button> \
                   </div> \
                   <div class='btn-group'> \
                     <button class='btn toolbar-element popover-toggle' data-toggle='popover' \
@@ -24,6 +23,24 @@ $(document).ready(function(){
                     title data-original-title='Height'> \
                     <i class='icon-th-large'></i> H</button> \
                   </div> \
+                  <div class='btn-group'> \
+                    <button class='btn toolbar-element dropdown-toggle' data-toggle='dropdown' href='#'> \
+                      Style \
+                      <span class='caret'></span> \
+                    </button> \
+                    <ul class='dropdown-menu'> \
+                      <li><a href='#' class='style style-adelle-thin' id='adelle-thin'>Adelle Thin</a></li> \
+                      <li><a href='#' class='style style-adelle-semibold' id='adelle-semibold'>Adelle Semibold</a></li> \
+                      <li><a href='#' class='style style-jaf-facitweb-extra-light' id='jaf-facitweb-extra-light'>JAF Extra Light</a></li> \
+                      <li><a href='#' class='style style-jaf-facitweb-extra-light-italic' id='jaf-facitweb-extra-light-italic'>JAF Extra Light Italic</a></li> \
+                      <li><a href='#' class='style style-jaf-facitweb-regular' id='jaf-facitweb-regular'>JAF Regular</a></li> \
+                      <li><a href='#' class='style style-jaf-facitweb-italic' id='jaf-facitweb-italic'>JAF Italic</a></li> \
+                      <li><a href='#' class='style style-jaf-facitweb-extra-bold' id='jaf-facitweb-extra-bold'>JAF Extra Bold</a></li> \
+                      <li><a href='#' class='style style-jaf-facitweb-extra-bold-italic' id='jaf-facitweb-extra-bold-italic'>JAF Extra Bold Italic</a></li> \
+                      <li><a href='#' class='style style-league-gothic-regular' id='league-gothic-regular'>League Reguar</a></li> \
+                      <li><a href='#' class='style style-league-gothic-italic' id='league-gothic-italic'>League Italic</a></li> \
+                    </ul> \
+                  </div> \
                 </div>";
 
   $("#notes").on('mouseenter', '.note', function(){
@@ -39,7 +56,7 @@ $(document).ready(function(){
     })
     .on('click','.popover-toggle', function(e){
       console.log($(this));
-      e.stopPropagation();
+      // e.stopPropagation();
       $(this).popover('show');
     })
     .on('mouseleave','.popover', function(e){
@@ -62,7 +79,12 @@ $(document).ready(function(){
                }
       });
       // remove toolbar when the note is no longer in focus
-      $(this).siblings('.toolbar').remove();
+      // $(this).siblings('.toolbar').remove();
+    })
+    .on('click','.style', function(e){
+      var newStyle = "style-"+$(this).attr('id');
+      var note = $(this).closest('.note');
+      note.removeClassRegex(/^style-/).addClass(newStyle);
     })
     .on('click', '.wnum', function(e){
       // Change note's width upon selection
@@ -102,7 +124,7 @@ $(document).ready(function(){
                type: 'PUT',
                data: { note: {id: noteId, height: newHeightClass} },
                success: function() {
-                 console.log('SERVER: width updated to '+selectedHeight);
+                 console.log('SERVER: height updated to '+selectedHeight);
                }
       });
     });
