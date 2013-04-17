@@ -1,5 +1,5 @@
 class Note < ActiveRecord::Base
-  attr_accessible :contents, :hashtags, :width, :height
+  attr_accessible :contents, :hashtags, :width, :height, :style, :align
   belongs_to :user
   has_many :hashtag_note_relations
   has_many :hashtags, :through => :hashtag_note_relations
@@ -43,7 +43,7 @@ class Note < ActiveRecord::Base
 
   def classes
     classes = ""
-    classes << self.width << " " << self.height
+    classes << self.width << " " << self.height << " " << self.align << " " << self.style
     return classes
   end
 

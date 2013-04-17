@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414041333) do
+ActiveRecord::Schema.define(:version => 20130417050138) do
 
   create_table "hashtag_note_relations", :force => true do |t|
     t.string   "hashtag_id"
@@ -29,10 +29,12 @@ ActiveRecord::Schema.define(:version => 20130414041333) do
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
     t.string   "contents"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "width",      :default => "notewidth1"
     t.string   "height",     :default => "noteheight1"
+    t.string   "align",      :default => "align-left"
+    t.string   "style",      :default => "style-jaf-facitweb-regular"
   end
 
   create_table "users", :force => true do |t|

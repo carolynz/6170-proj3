@@ -155,17 +155,28 @@ body {
 .toolbar {
   white-space:nowrap;
   position:absolute;
+  // float:left;
   left:0px;
   top: -50px;
   z-index:1000;
 }
 
+.align-left{
+  text-align: left;
+}
+.align-right{
+  text-align: right;
+}
+.align-center{
+  text-align: center;
+}
 .toolbar-element {
   overflow:visible;
 }
 
 .isotope,
 .isotope .isotope-item {
+  z-index:3;
   /* change duration value to whatever you like */
   -webkit-transition-duration: 0.7s;
      -moz-transition-duration: 0.7s;
