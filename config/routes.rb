@@ -1,9 +1,6 @@
 CarolynzProj3::Application.routes.draw do
 
   get "home/index"
-
-  resources :hashtags
-
   resources :notes
 
   get "sessions/new"

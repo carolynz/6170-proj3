@@ -163,23 +163,6 @@ $(document).ready(function(){
                }
       });
     });
-  // $('#all_notes_link').on('click', function(){
-  //   console.log('all notes link got clicked, beginning');
-  //   $('#notes_h1').text("All notes");
-  //   $('#notes').html("<%= escape_javascript(render(:partial => 'notes/note', :collection => @notes))%>");
-  //   console.log('all notes link got clicked, end');
-  // });
-
-  // $('.hashtag_link').on('click', function(){
-  //   console.log('in hashtag_link function');
-  //   var hashtag_id = $(this).closest('.hashtag').attr('id').replace(/^\D+/g, '');
-  //   $.ajax({ url: '/hashtags/'+hashtag_id,
-  //            type: 'GET',
-  //            success: function(){
-  //              console.log('got hashtag!');
-  //            }
-  //   });
-  // });
 
   $('#notes').isotope({
     // options for jquery isotope plugin

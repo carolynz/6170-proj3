@@ -2,5 +2,3 @@ $('#notes').prepend("<%= escape_javascript(render(@note)) %>")
   .isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
 $("#new_note")[0].reset();
-
-// $("#hashtags").html("<%= escape_javascript(render(:partial => 'hashtags/index', :locals => {:hashtags => @hashtags}))%>")
