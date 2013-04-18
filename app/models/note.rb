@@ -3,6 +3,8 @@ class Note < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :contents, :on => :create
 
+  # Returns a string of the classes for the note's div
+  # Used for note styling purposes
   def classes
     classes = ""
     classes << self.width << " " << self.height << " " << self.align << " " << self.style << " " << self.textsize

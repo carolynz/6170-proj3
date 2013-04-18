@@ -1,40 +1,39 @@
 class NotesController < ApplicationController
-  # POST /notes
-  # POST /notes.json
+  
+  # Creates a new note object.
+  # Upon successful note creation, calls 'create.js.erb,'
+  # which adds the new note to the view.
   def create
     @note = current_user.notes.create(params[:note])
 
     respond_to do |format|
       if @note.save
         format.js
-        # TODO: include flash notice for error message
       end
     end
   end
 
-  # PUT /notes/1
-  # PUT /notes/1.json
+  # Updates an existing note object.
+  # Upon successful note creation, calls 'update.js.erb'
   def update
     @note = Note.find(params[:id])
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
         format.js
-      else
-        # TODO: include flash notice for error message
       end
     end
   end
 
-  # DELETE /notes/1
-  # DELETE /notes/1.json
+  # Deletes a note object from the database.
+  # Upon successful note deletion, calls 'destroy.js.erb,'
+  # which removes the deleted note from the view.
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
 
     respond_to do |format|
       format.js
-      # TODO: include flash notice for error message
     end
   end
 end

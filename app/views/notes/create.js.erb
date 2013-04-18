@@ -1,12 +1,16 @@
+// Renders new note at the top of the note grid
 $('#notes').prepend("<%= escape_javascript(render(@note)) %>")
   .isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
+// Clears the new note form
 $("#new_note")[0].reset();
 
+// Add tooltip for the delete icon
 $('.note_delete_class').tooltip({
   title: 'Delete',
 });
 
+// Add tooltip for the pencil (edit formatting) icon
 $('.note_edit_class').tooltip({
   title: 'Edit formatting',
 });

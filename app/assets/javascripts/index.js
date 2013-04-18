@@ -1,17 +1,23 @@
 $(document).ready(function(){
-
+  // Remove toolbar from the view and save it as the "toolbar" variable as soon as the document has loaded.
+  // Note for TA: Originally, I had a long string with the HTML for the toolbar in this file.
+  // I changed my mind and made the toolbar hidden on the main notes page
+  // for a slightly cleaner and easier-to-read implementation.
   var toolbar = $('.toolbar').remove();
 
-  // Tooltip handling
+  // Add tooltips to notes' delete icons
   $('.note_delete_class').tooltip({
     title: 'Delete',
   });
 
+  // Add tooltips to notes' pencil (edit formatting) icons
   $('.note_edit_class').tooltip({
     title: 'Edit formatting',
   });
 
-  // Popover handling
+  // Toggle popover when .popover-toggle classes are clicked
+  // Hide other popovers when a new popover is opened,
+  // So that only one popover is ever open at a time.
   $("#notes").on('click','.popover-toggle', function(e){
       // console.log($(this));
       $(this).popover('toggle');
@@ -20,10 +26,13 @@ $(document).ready(function(){
       $(this).siblings('.popover-toggle').popover('hide');
     });
 
-  // Width and height resize handling
-  $("#notes")
-    .on('click', '.wnum', function(e){
-      // Change note's width upon selection
+  /**********************
+  * NOTE WIDTH HANDLING *
+  ***********************/
+
+  // Handler for click events on the width and size popovers
+  // Change note's width upon selection:
+  $("#notes").on('click', '.wnum', function(e){
       e.preventDefault();
       // console.log('wnum clicked');
       var note = $(this).closest('.note');
@@ -31,8 +40,9 @@ $(document).ready(function(){
       var selectedWidth = $(this).attr('id').replace(/^\D+/g, '');
       var newWidthClass = 'notewidth'+selectedWidth;
 
+      // Update the note's size in the view
       note.removeClassRegex(/^notewidth/).addClass(newWidthClass);
-
+      // Reorganize the note tiles
       $('#notes').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
       // Send width update request to server
@@ -44,8 +54,8 @@ $(document).ready(function(){
                }
       });
     })
+    // Change note's height upon selection:
     .on('click', '.hnum', function(e){
-      // Change note's width upon selection
       e.preventDefault();
       // console.log('hnum clicked');
       var note = $(this).closest('.note');
@@ -53,11 +63,12 @@ $(document).ready(function(){
       var selectedHeight = $(this).attr('id').replace(/^\D+/g, '');
       var newHeightClass = 'noteheight'+selectedHeight;
 
+      // Update the note's size in the view
       note.removeClassRegex(/^noteheight/).addClass(newHeightClass);
-
+      // Reorganize the note tiles
       $('#notes').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
-      // Send width update request to server
+      // Send height update request to server
       $.ajax({ url: '/notes/'+noteId,
                type: 'PUT',
                data: { note: { id: noteId, height: newHeightClass} },
@@ -67,25 +78,29 @@ $(document).ready(function(){
       });
     })
 
-    // Text size handling
+    /*********************
+    * TEXT SIZE HANDLING *
+    **********************/
+
+    // Array of possible text sizes (in pt)
     var textsizes = [12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 108, 144];
 
+    // Handler for the text-size buttons
     $("#notes").on('click', '.textsize', function(e){
       e.preventDefault();
-      // console.log('a textsize button was clicked');
-      // console.log($(this).attr('id'));
+
+      // Find the note's current text size by extracting the class
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
       var oldSize;
-      // console.log(" " + note.attr('class') + " ");
+      // Match strings in the class that have the pattern " textsize-dd" where d is a digit
       var matches = (" " + note.attr('class') + " ").match(/\stextsize-(\d+)\s/);
-      // console.log('matches');
-      // console.log(matches);
+      // If there are results, convert to int
       if (matches) {
         oldSize = parseInt(matches[1], 10);
-        // console.log('oldSize');
       }
 
+      // If the textsize-increase button was clicked
       if ($(this).attr('id') === 'textsize-increase') {
         // if the old text size is not the largest text size,
         // (e.g., if the text size can still be increased),
@@ -99,10 +114,10 @@ $(document).ready(function(){
                    type: 'PUT',
                    data: { note: { id: noteId, textsize: newTextsizeClass} },
                    success: function() {
-                     // console.log('SERVER: textsize increased to '+newSize);
                    }
           });
-        };     
+        };
+       // If the textsize-decrease button was clicked
       } else if($(this).attr('id') === 'textsize-decrease') {
         // if the old text size is not the smallest text size,
         // (e.g., if the text size can still be decreased),
@@ -111,22 +126,19 @@ $(document).ready(function(){
           var newSize = textsizes[(textsizes.indexOf(oldSize)-1)];
           var newTextsizeClass = 'textsize-'+newSize;
           note.removeClassRegex(/^textsize-/).addClass(newTextsizeClass);
-          // Send width update request to server
           $.ajax({ url: '/notes/'+noteId,
                    type: 'PUT',
                    data: { note: { id: noteId, textsize: newTextsizeClass} },
                    success: function() {
-                     // console.log('SERVER: textsize decremented to '+newSize);
                    }
           });
         }; 
       };      
     });
 
-  // Prevent mousedowns from taking focus off of contenteditable
   $("#notes").on('mousedown', '.toolbar', function(e){
+      // Prevent mousedowns from taking focus off of contenteditable
       e.preventDefault();
-      // console.log('mousedown in toolbar');
     })
     .on('click','.style', function(e){
       e.stopPropagation();
@@ -222,6 +234,8 @@ $(document).ready(function(){
 
 });
 
+// Function to remove classes given a regex pattern
+// Taken from this blog post: http://www.websanova.com/tutorials/jquery/jquery-remove-class-by-regular-expression
 (function($){
   $.fn.removeClassRegex = function(regex){
     return this.each(function()

@@ -1,11 +1,14 @@
 <div class = "span12">
+  <!-- Render new note form -->
   <h1 id = "notes_h1">All notes</h1>
   <%= render :partial => "notes/new" %>
 
+  <!-- Render the user's notes -->
   <div id = "notes">
     <%= render :partial => "notes/note", :collection => @notes %>
   </div>
 
+  <!-- Render a hidden toolbar that the page's script can use -->
   <div style="display:none;">
     <%= render :partial => "toolbar" %>
   </div>

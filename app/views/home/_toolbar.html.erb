@@ -1,8 +1,10 @@
 <div class="toolbar btn-toolbar">
+  <!-- Button to toggle font dropdown -->
   <div class="btn-group dropdown toolbar-element">
     <button class="btn toolbar-element dropdown-toggle" id="style-dropdown-toggle" data-toggle="dropdown">
       <i class="icon-font"></i><span class="caret"></span>
     </button>
+    <!-- Dropdown to modify note font -->
     <ul class="dropdown-menu toolbar-element">
       <li><a href="#" class="style style-adelle-thin" id="adelle-thin">Adelle Thin</a></li>
       <li><a href="#" class="style style-jaf-facitweb-extra-light" id="jaf-facitweb-extra-light">JAF Extra Light</a></li>
@@ -11,26 +13,29 @@
       <li><a href="#" class="style style-league-gothic-regular" id="league-gothic-regular">League Regular</a></li>
     </ul>
   </div>
+
+  <!-- Buttons to toggle text alignment (left, right, center) -->
   <div class="btn-group" data-toggle="buttons-radio">
     <button class="btn toolbar-element align" id="left"><i class="icon-align-left"></i></button>
     <button class="btn toolbar-element align" id="center"><i class="icon-align-center"></i></button>
     <button class="btn toolbar-element align" id="right"><i class="icon-align-right"></i></button>
   </div>
+
+  <!-- Buttons to increase or decrease text size -->
   <div class="btn-group" data-toggle="buttons-radio">
     <button class="btn toolbar-element textsize" id="textsize-increase"><i class="icon-text-height"></i><i class="icon-plus"></i></button>
     <button class="btn toolbar-element textsize" id="textsize-decrease"><i class="icon-text-height"></i><i class="icon-minus"></i></button>
   </div>
+
+  <!-- Button/popover to modify note width (in # of grid width units) -->
   <div class="btn-group toolbar-element">
-    <button class="btn toolbar-element popover-toggle" data-toggle="popover"
-    data-placement="top" data-html="true" data-trigger="manual"
-    data-content="<a href='#' class='wnum' id='wnum_1'>1</a>
-    <a href='#' class='wnum' id='wnum_2'>2</a>
-    <a href='#'class='wnum' id='wnum_3'>3</a>"
-    title data-original-title="Width" id="width-select">
+    <button class="btn toolbar-element popover-toggle" data-toggle="popover" data-placement="top" data-html="true" data-trigger="manual" data-content="<a href='#' class='wnum' id='wnum_1'>1</a> <a href='#' class='wnum' id='wnum_2'>2</a> <a href='#'class='wnum' id='wnum_3'>3</a> <a href='#' class='wnum' id='wnum_4'>4</a> <a href='#' class='wnum' id='wnum_5'>5</a> " title data-original-title="Width" id="width-select">
     <i class="icon-th-large"></i> W</button>
   </div>
+
+  <!-- Button/popover to modify note height (in # of grid width units) -->
   <div class="btn-group toolbar-element">
-    <button class="btn toolbar-element popover-toggle" data-toggle="popover" data-placement="top" data-html="true" data-trigger="manual" data-content="<a href='#' class='hnum' id='hnum_1'>1</a> <a href='#' class='hnum' id='hnum_2'>2</a> <a href='#'class='hnum' id='hnum_3'>3</a>" title data-original-title="Height" id="height-select">
+    <button class="btn toolbar-element popover-toggle" data-toggle="popover" data-placement="top" data-html="true" data-trigger="manual" data-content="<a href='#' class='hnum' id='hnum_1'>1</a> <a href='#' class='hnum' id='hnum_2'>2</a> <a href='#'class='hnum' id='hnum_3'>3</a> <a href='#'class='hnum' id='hnum_4'>4</a> <a href='#'class='hnum' id='hnum_5'>5</a>" title data-original-title="Height" id="height-select">
     <i class="icon-th-large"></i> H</button>
   </div>
 </div>
