@@ -13,7 +13,7 @@ $(document).ready(function(){
 
   // Popover handling
   $("#notes").on('click','.popover-toggle', function(e){
-      console.log($(this));
+      // console.log($(this));
       $(this).popover('toggle');
     })
     .on('mouseleave','.popover', function(e){
@@ -25,7 +25,7 @@ $(document).ready(function(){
     .on('click', '.wnum', function(e){
       // Change note's width upon selection
       e.preventDefault();
-      console.log('wnum clicked');
+      // console.log('wnum clicked');
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
       var selectedWidth = $(this).attr('id').replace(/^\D+/g, '');
@@ -40,14 +40,14 @@ $(document).ready(function(){
                type: 'PUT',
                data: { note: { id: noteId, width: newWidthClass} },
                success: function() {
-                 console.log('SERVER: width updated to '+selectedWidth);
+                 // console.log('SERVER: width updated to '+selectedWidth);
                }
       });
     })
     .on('click', '.hnum', function(e){
       // Change note's width upon selection
       e.preventDefault();
-      console.log('hnum clicked');
+      // console.log('hnum clicked');
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
       var selectedHeight = $(this).attr('id').replace(/^\D+/g, '');
@@ -62,7 +62,7 @@ $(document).ready(function(){
                type: 'PUT',
                data: { note: { id: noteId, height: newHeightClass} },
                success: function() {
-                 console.log('SERVER: height updated to '+selectedHeight);
+                 // console.log('SERVER: height updated to '+selectedHeight);
                }
       });
     })
@@ -72,18 +72,18 @@ $(document).ready(function(){
 
     $("#notes").on('click', '.textsize', function(e){
       e.preventDefault();
-      console.log('a textsize button was clicked');
-      console.log($(this).attr('id'));
+      // console.log('a textsize button was clicked');
+      // console.log($(this).attr('id'));
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
       var oldSize;
-      console.log(" " + note.attr('class') + " ");
+      // console.log(" " + note.attr('class') + " ");
       var matches = (" " + note.attr('class') + " ").match(/\stextsize-(\d+)\s/);
-      console.log('matches');
-      console.log(matches);
+      // console.log('matches');
+      // console.log(matches);
       if (matches) {
         oldSize = parseInt(matches[1], 10);
-        console.log('oldSize');
+        // console.log('oldSize');
       }
 
       if ($(this).attr('id') === 'textsize-increase') {
@@ -99,7 +99,7 @@ $(document).ready(function(){
                    type: 'PUT',
                    data: { note: { id: noteId, textsize: newTextsizeClass} },
                    success: function() {
-                     console.log('SERVER: textsize increased to '+newSize);
+                     // console.log('SERVER: textsize increased to '+newSize);
                    }
           });
         };     
@@ -116,7 +116,7 @@ $(document).ready(function(){
                    type: 'PUT',
                    data: { note: { id: noteId, textsize: newTextsizeClass} },
                    success: function() {
-                     console.log('SERVER: textsize decremented to '+newSize);
+                     // console.log('SERVER: textsize decremented to '+newSize);
                    }
           });
         }; 
@@ -126,7 +126,7 @@ $(document).ready(function(){
   // Prevent mousedowns from taking focus off of contenteditable
   $("#notes").on('mousedown', '.toolbar', function(e){
       e.preventDefault();
-      console.log('mousedown in toolbar');
+      // console.log('mousedown in toolbar');
     })
     .on('click','.style', function(e){
       e.stopPropagation();
@@ -140,16 +140,16 @@ $(document).ready(function(){
                type: 'PUT',
                data: { note: { id: noteId, style: newStyle } },
                success: function() {
-                 console.log('style updated');
+                 // console.log('style updated');
                }
       });
     })
     .on('click','.align', function(e){
-      console.log('align clicked');
-      console.log($(this));
-      console.log(e);
-      console.log('e.target: ');
-      console.log(e.target);
+      // console.log('align clicked');
+      // console.log($(this));
+      // console.log(e);
+      // console.log('e.target: ');
+      // console.log(e.target);
       e.stopPropagation();
       var newAlign = "align-"+$(this).attr('id');
       var note = $(this).closest('.note');
@@ -159,7 +159,7 @@ $(document).ready(function(){
                type: 'PUT',
                data: { note: { id: noteId, align: newAlign } },
                success: function() {
-                 console.log('alignment updated');
+                 // console.log('alignment updated');
                }
       });
     })
@@ -170,7 +170,7 @@ $(document).ready(function(){
 
     // Handle note hover events
     $('#notes').on('mouseenter', '.note', function(){
-      console.log('mouseentered note');
+      // console.log('mouseentered note');
       $(this).children(".note_delete_class").show();
       if (!($(this).children('.toolbar')[0])){
         $(this).children(".note_edit_class").show();
@@ -197,16 +197,16 @@ $(document).ready(function(){
       }
     })
     .on('blur', '.note_contents', function(){
-      console.log('note_contents blurred!');
+      // console.log('note_contents blurred!');
           var contents = $(this).contents;
           var newText = $(this).html();
-          console.log(newText);
+          // console.log(newText);
           var noteId = $(this).closest('.note').attr('id').replace(/^\D+/g, '');
           $.ajax({ url: '/notes/'+noteId,
                    type: 'PUT',
                    data: { note: { id: noteId, contents: newText } },
                    success: function() {
-                      console.log('content update success!');
+                      // console.log('content update success!');
                    }
           });
     });
