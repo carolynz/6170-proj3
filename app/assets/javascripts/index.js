@@ -149,9 +149,6 @@ $(document).ready(function(){
   $("#notes").on('mousedown', '.toolbar', function(e){
       // Prevent mousedowns from taking focus off of contenteditable
       e.preventDefault();
-    }).on('click','.dropdown-toggle', function(e){
-      e.preventDefault();
-      return false;
     });
 
   /***********************

@@ -7,11 +7,6 @@ class Note < ActiveRecord::Base
   # Used for note styling purposes
   def classes
     classes = ""
-    logger.info "#{self.width}"
-    logger.info "#{self.height}"
-    logger.info "#{self.align}"
-    logger.info "#{self.style}"
-    logger.info "#{self.textsize}"
     classes << self.width << " " << self.height << " " << self.align << " " << self.style << " " << self.textsize
     return classes
   end
