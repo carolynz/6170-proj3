@@ -1,5 +1,5 @@
 class Note < ActiveRecord::Base
-  attr_accessible :contents, :width, :height, :style, :align, :textsize, :backgroundcolor, :textcolor, :italics
+  attr_accessible :contents, :width, :height, :style, :align, :textsize
   belongs_to :user
   validates_presence_of :contents, :on => :create
 
@@ -8,9 +8,6 @@ class Note < ActiveRecord::Base
   def classes
     classes = ""
     classes << self.width << " " << self.height << " " << self.align << " " << self.style << " " << self.textsize
-    if (self.italics).length > 0
-      classes << " " << self.italics
-    end
     return classes
   end
 
