@@ -60,7 +60,6 @@ body {
   margin-right: @box-margin;
   margin-bottom: @box-margin;
   background-color: #EEE;
-
   z-index: 2;
   position: relative;
 }
@@ -75,11 +74,6 @@ body {
       -ms-transition-duration: 0s;
        -o-transition-duration: 0s;
           transition-duration: 0s;
-}
-
-.note_contents {
-  z-index:3;
-  white-space:pre-wrap;
 }
 
 .notewidth1 {
@@ -124,13 +118,15 @@ body {
 
 .note_contents {
   position:absolute;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   width: inherit;
   height: inherit;
   overflow-y: scroll;
+  z-index:3;
+  white-space:pre-wrap;
 }
 
 .align-left{
@@ -276,16 +272,16 @@ body {
   text-align: right;
   height:0px;
   position:absolute;
-  top:10px;
-  z-index: 4;
+  top:5px;
+  z-index: 5;
 }
 
 .note_edit_class{
-  right:40px;
+  right:35px;
 }
 
 .note_delete_class{
-  right:23px;
+  right:20px;
 }
 
 .edit_note,
@@ -303,12 +299,9 @@ body {
   color: #000000;
   opacity:0.4;
   text-decoration:none;
-  font-size:16px;
-  line-height: 20px;
 }
 
 .toolbar {
-  white-space:nowrap;
   position:absolute;
   text-align: left;
   left:0px;
