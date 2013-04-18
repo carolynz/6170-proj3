@@ -1,6 +1,5 @@
 <%= div_for(note, :class => note.classes ) do %>
-  <div class = "note_delete" style = "display: none;">
-    <%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, note, :method => :delete, :class => "delete_note", :remote => true %>
-  </div>
+  <div class = "note_delete_class" style = "display: none;"><%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, note, :method => :delete, :class => "delete_note", :remote => true %></div>
+  <div class = "note_edit_class" style = "display: none;"><%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, "#", :class => "edit_note", :remote => true %></div>
   <div class = 'note_contents' contenteditable = true><%= "#{note.contents}".html_safe %></div>
 <% end %>

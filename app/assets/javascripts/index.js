@@ -1,79 +1,31 @@
 $(document).ready(function(){
-  var toolbar = "<div class='toolbar btn-toolbar'> \
-                  <div class='btn-group' data-toggle='buttons-radio'> \
-                    <button class='btn toolbar-element align' id='left'><i class='icon-align-left'></i></button> \
-                    <button class='btn toolbar-element align' id='center'><i class='icon-align-center'></i></button> \
-                    <button class='btn toolbar-element align' id='right'><i class='icon-align-right'></i></button> \
-                  </div> \
-                  <div class='btn-group toolbar-element'> \
-                    <button class='btn toolbar-element popover-toggle' data-toggle='popover' \
-                    data-placement='top' data-html='true' \
-                    data-content='<a href=&quot;#&quot; class=&quot;wnum&quot; id=&quot;wnum_1&quot;>1</a> \
-                    <a href=&quot;#&quot; class=&quot;wnum&quot; id=&quot;wnum_2&quot;>2</a> \
-                    <a href=&quot;#&quot;class=&quot;wnum&quot; id=&quot;wnum_3&quot;>3</a>' \
-                    title data-original-title='Width'> \
-                    <i class='icon-th-large'></i> W</button> \
-                  </div> \
-                  <div class='btn-group toolbar-element'> \
-                    <button class='btn toolbar-element popover-toggle' data-toggle='popover' \
-                    data-placement='top' data-html='true' \
-                    data-content='<a href=&quot;#&quot; class=&quot;hnum&quot; id=&quot;hnum_1&quot;>1</a>  \
-                    <a href=&quot;#&quot; class=&quot;hnum&quot; id=&quot;hnum_2&quot;>2</a>  \
-                    <a href=&quot;#&quot;class=&quot;hnum&quot; id=&quot;hnum_3&quot;>3</a>' \
-                    title data-original-title='Height'> \
-                    <i class='icon-th-large'></i> H</button> \
-                  </div> \
-                  <div class='btn-group toolbar-element'> \
-                    <button class='btn toolbar-element dropdown-toggle' data-toggle='dropdown' href='#'> \
-                      Style \
-                      <span class='caret'></span> \
-                    </button> \
-                    <ul class='dropdown-menu toolbar-element'> \
-                      <li><a href='#' class='style style-adelle-thin' id='adelle-thin'>Adelle Thin</a></li> \
-                      <li><a href='#' class='style style-adelle-semibold' id='adelle-semibold'>Adelle Semibold</a></li> \
-                      <li><a href='#' class='style style-jaf-facitweb-extra-light' id='jaf-facitweb-extra-light'>JAF Extra Light</a></li> \
-                      <li><a href='#' class='style style-jaf-facitweb-extra-light-italic' id='jaf-facitweb-extra-light-italic'>JAF Extra Light Italic</a></li> \
-                      <li><a href='#' class='style style-jaf-facitweb-regular' id='jaf-facitweb-regular'>JAF Regular</a></li> \
-                      <li><a href='#' class='style style-jaf-facitweb-italic' id='jaf-facitweb-italic'>JAF Italic</a></li> \
-                      <li><a href='#' class='style style-jaf-facitweb-extra-bold' id='jaf-facitweb-extra-bold'>JAF Extra Bold</a></li> \
-                      <li><a href='#' class='style style-jaf-facitweb-extra-bold-italic' id='jaf-facitweb-extra-bold-italic'>JAF Extra Bold Italic</a></li> \
-                      <li><a href='#' class='style style-league-gothic-regular' id='league-gothic-regular'>League Reguar</a></li> \
-                      <li><a href='#' class='style style-league-gothic-italic' id='league-gothic-italic'>League Italic</a></li> \
-                    </ul> \
-                  </div> \
-                </div>";
 
-  $("#notes")
-    .on('mouseenter', '.note', function(){
-      console.log('mouseentered note');
-      $(this).children(".note_delete").show();
-    })
-    .on('mouseleave', '.note', function(){
-      $(this).children(".note_delete").hide();
-    })
-    .on('click','.popover-toggle', function(e){
+  var toolbar = $('.toolbar').remove();
+
+  // Tooltip handling
+  $('.note_delete_class').tooltip({
+    title: 'Delete',
+  });
+
+  $('.note_edit_class').tooltip({
+    title: 'Edit formatting',
+  });
+
+  // Popover handling
+  $("#notes").on('click','.popover-toggle', function(e){
       console.log($(this));
-      // e.stopPropagation();
-      $(this).popover('show');
+      $(this).popover('toggle');
     })
     .on('mouseleave','.popover', function(e){
       $(this).siblings('.popover-toggle').popover('hide');
-    })
-    .on('click','.dropdown-toggle', function(e){
-      // $(this).dropdown();
-      e.stopPropagation();
-      console.log($(this));
-      $(this).dropdown();
-      // e.preventDefault();
-      console.log('click in dropdown-toggle');
-    })
-    .on('focus', '.note_contents', function(){
-      console.log('note_contents focused')
-      $(this).parent().append(toolbar);
-    })
+    });
+
+  // Width and height resize handling
+  $("#notes")
     .on('click', '.wnum', function(e){
       // Change note's width upon selection
       e.preventDefault();
+      console.log('wnum clicked');
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
       var selectedWidth = $(this).attr('id').replace(/^\D+/g, '');
@@ -95,6 +47,7 @@ $(document).ready(function(){
     .on('click', '.hnum', function(e){
       // Change note's width upon selection
       e.preventDefault();
+      console.log('hnum clicked');
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
       var selectedHeight = $(this).attr('id').replace(/^\D+/g, '');
@@ -113,14 +66,70 @@ $(document).ready(function(){
                }
       });
     })
-    .on('mousedown', '.toolbar', function(e){
+
+    // Text size handling
+    var textsizes = [12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 108, 144];
+
+    $("#notes").on('click', '.textsize', function(e){
+      e.preventDefault();
+      console.log('a textsize button was clicked');
+      console.log($(this).attr('id'));
+      var note = $(this).closest('.note');
+      var noteId = note.attr('id').replace(/^\D+/g, '');
+      var oldSize;
+      console.log(" " + note.attr('class') + " ");
+      var matches = (" " + note.attr('class') + " ").match(/\stextsize-(\d+)\s/);
+      console.log('matches');
+      console.log(matches);
+      if (matches) {
+        oldSize = parseInt(matches[1], 10);
+        console.log('oldSize');
+      }
+
+      if ($(this).attr('id') === 'textsize-increase') {
+        // if the old text size is not the largest text size,
+        // (e.g., if the text size can still be increased),
+        // update the classes in the DOM and send the AJAX update request
+        if (oldSize < textsizes[textsizes.length-1]) {
+          var newSize = textsizes[(textsizes.indexOf(oldSize)+1)];
+          var newTextsizeClass = 'textsize-'+newSize;
+          note.removeClassRegex(/^textsize-/).addClass(newTextsizeClass);
+          // Send width update request to server
+          $.ajax({ url: '/notes/'+noteId,
+                   type: 'PUT',
+                   data: { note: { id: noteId, textsize: newTextsizeClass} },
+                   success: function() {
+                     console.log('SERVER: textsize increased to '+newSize);
+                   }
+          });
+        };     
+      } else if($(this).attr('id') === 'textsize-decrease') {
+        // if the old text size is not the smallest text size,
+        // (e.g., if the text size can still be decreased),
+        // update the classes in the DOM and send the AJAX update request
+        if (oldSize > textsizes[0]) {
+          var newSize = textsizes[(textsizes.indexOf(oldSize)-1)];
+          var newTextsizeClass = 'textsize-'+newSize;
+          note.removeClassRegex(/^textsize-/).addClass(newTextsizeClass);
+          // Send width update request to server
+          $.ajax({ url: '/notes/'+noteId,
+                   type: 'PUT',
+                   data: { note: { id: noteId, textsize: newTextsizeClass} },
+                   success: function() {
+                     console.log('SERVER: textsize decremented to '+newSize);
+                   }
+          });
+        }; 
+      };      
+    });
+
+  // Prevent mousedowns from taking focus off of contenteditable
+  $("#notes").on('mousedown', '.toolbar', function(e){
       e.preventDefault();
       console.log('mousedown in toolbar');
     })
     .on('click','.style', function(e){
-      // e.preventDefault();
       e.stopPropagation();
-      console.log('default prevented!');
       var newStyle = "style-"+$(this).attr('id');
       var note = $(this).closest('.note');
       var noteId = note.attr('id').replace(/^\D+/g, '');
@@ -135,21 +144,12 @@ $(document).ready(function(){
                }
       });
     })
-    .on('blur', '.note_contents', function(){
-      // send update note content via AJAX request to server 
-      var contents = $(this);
-      var newText = $(this).html();
-      console.log(newText);
-      var noteId = $(this).closest('.note').attr('id').replace(/^\D+/g, '');
-      $.ajax({ url: '/notes/'+noteId,
-               type: 'PUT',
-               data: { note: { id: noteId, contents: newText } },
-               success: function() {
-                contents.siblings('.toolbar').remove();
-               }
-      });
-      // $(this).siblings('.toolbar').remove();
-    }).on('click','.align', function(e){
+    .on('click','.align', function(e){
+      console.log('align clicked');
+      console.log($(this));
+      console.log(e);
+      console.log('e.target: ');
+      console.log(e.target);
       e.stopPropagation();
       var newAlign = "align-"+$(this).attr('id');
       var note = $(this).closest('.note');
@@ -162,14 +162,62 @@ $(document).ready(function(){
                  console.log('alignment updated');
                }
       });
+    })
+    .on('click','.dropdown-toggle', function(e){
+      e.preventDefault();
+      return false;
     });
+
+    // Handle note hover events
+    $('#notes').on('mouseenter', '.note', function(){
+      console.log('mouseentered note');
+      $(this).children(".note_delete_class").show();
+      if (!($(this).children('.toolbar')[0])){
+        $(this).children(".note_edit_class").show();
+      }
+    })
+    .on('mouseleave', '.note', function(){
+      $(this).children(".note_delete_class").hide();
+      $(this).children(".note_edit_class").hide();
+    });
+
+    $('#notes').on('click', '.note_edit_class', function(){
+      if ($('.toolbar')[0]){
+        $('.toolbar').remove();
+      }
+      $(this).parent().append(toolbar);
+    });
+
+    // Handle note contents events
+    $('#notes').on('focus', '.note_contents', function(){
+      // If there are open toolbars elsewhere,
+      // remove them from the DOM
+      if ($('.toolbar')[0]){
+        $('.toolbar').remove();
+      }
+    })
+    .on('blur', '.note_contents', function(){
+      console.log('note_contents blurred!');
+          var contents = $(this).contents;
+          var newText = $(this).html();
+          console.log(newText);
+          var noteId = $(this).closest('.note').attr('id').replace(/^\D+/g, '');
+          $.ajax({ url: '/notes/'+noteId,
+                   type: 'PUT',
+                   data: { note: { id: noteId, contents: newText } },
+                   success: function() {
+                      console.log('content update success!');
+                   }
+          });
+    });
+
 
   $('#notes').isotope({
     // options for jquery isotope plugin
     masonry: {
       columnWidth:210
     },
-    itemSelector : '.note'    
+    itemSelector : '.note',
   });    
 
 });

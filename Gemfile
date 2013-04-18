@@ -17,10 +17,13 @@ gem 'bcrypt-ruby'
 
 gem 'therubyracer'
 gem 'less-rails'
+gem 'sass-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'cancan'
 gem 'ransack'
+
+gem 'farbtastic-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -19,7 +19,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        # format.js
+        format.js
       else
         # TODO: include flash notice for error message
       end

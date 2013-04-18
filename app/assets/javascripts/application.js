@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.isotope.min
 //= require twitter/bootstrap
+//= require farbtastic
 //= require index
 //= require_tree .
 

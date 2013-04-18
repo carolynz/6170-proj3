@@ -7,20 +7,8 @@ Please put it here: http://tranquil-inlet-4297.herokuapp.com/
 
 ###Notes
 
-Any instructions or notes for your grader should be placed here.
+Safari 6.0.1 was used as the development browser.
 
-
-###Code Deliverables
-
-Your code should be a rails project located at the root of this repository. To
-create a new rails project, run
-
-    >> rails new .
-
-in this directory.
-
-
-###PDF Deliverables
-
-Additional deliverables, such as the problem-analysis and the design-analysis, should
-be saved as PDF files in the directory called "deliverables"
+Known issues:
+- Clicking the "A" (font) button jumps the screen to the top of the page
+  I had problem preventing the hash-jump because my clicks for the dropdown button somehow don't register properly in jQuery.

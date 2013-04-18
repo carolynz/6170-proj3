@@ -2,3 +2,11 @@ $('#notes').prepend("<%= escape_javascript(render(@note)) %>")
   .isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
 $("#new_note")[0].reset();
+
+$('.note_delete_class').tooltip({
+  title: 'Delete',
+});
+
+$('.note_edit_class').tooltip({
+  title: 'Edit formatting',
+});
